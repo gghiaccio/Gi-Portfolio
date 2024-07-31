@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CONTROLLO MAIL</title>
+</head>
+
+<body style="background-color: darkgray; color: black; font-family: 'Times New Roman', Times, serif;">
+    <img src="20231003cvimage.jpg" width="1450" height="300" />
+    <h1 style="text-align: center;">CONTROLLO VALIDITA'</h1>
+    <h1 style="text-align: center;">________________</h1>
+
+    <label for="print"> Inserire <b>Mail.</b></label> <br>
+    <input type="text" id="Email">
+    <input type="button" onclick="Conferma()" value="Conferma.">
+
+    <script>
+        function Conferma() {
+            let EmailInserita = document.getElementById("Email").value;
+
+            let RegTest = /@/;
+
+            if (RegTest.test(EmailInserita)) 
+            {
+                let DominioIniziale = EmailInserita.split('@')[1];
+                let DominioFinale = DominioIniziale.split('.')[1];
+
+                let Valido = true;  
+
+                if (DominioFinale.length >= 2 && DominioFinale.length <= 4) 
+                {
+                    for (let i = 0; i < DominioFinale.length; i++) 
+                    {
+                        if (DominioFinale[i].length < 2 || DominioFinale[i].length > 4) 
+                        {
+                            Valido = false;
+                            break;
+                        }
+                    }
+
+                    if (Valido)  
+                    {
+                        alert("La mail è valida");
+                    }
+                    else
+                    {
+                        alert("La mail non è valida");
+                    }
+                } 
+                else 
+                {
+                    alert("La mail non è valida");
+                }
+            } 
+            else 
+            {
+                alert("La mail non è valida");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
