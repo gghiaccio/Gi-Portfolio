@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo delle Olimpiadi</title>
+</head>
+<body>
+    <canvas id="olympicSymbol" width="1000" height="1000"></canvas>
+    <script>
+        const canvas = document.getElementById('olympicSymbol');
+        const ctx = canvas.getContext('2d');
+
+        const Colori = ['#0085C7', '#000000', '#CD202C', '#F4C300', '#009F3D'];
+
+        const Spessore = 20;
+        const Raggio = 100;
+
+        const Posizione = [
+            { x: 300, y: 300 },
+            { x: 520, y: 300 },
+            { x: 740, y: 300 },
+            { x: 410, y: 400 },
+            { x: 630, y: 400 }
+        ];
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // blu
+        ctx.beginPath();
+        ctx.arc(Posizione[0].x, Posizione[0].y, Raggio, 0, (Math.PI/2));
+        ctx.lineWidth = Spessore;
+        ctx.strokeStyle = Colori[0];
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(Posizione[0].x, Posizione[0].y, Raggio, (Math.PI/2), Math.PI*2);
+        ctx.lineWidth = Spessore;
+        ctx.strokeStyle = Colori[0];
+        ctx.stroke();
+        ctx.closePath();
+
+        // nero
+        ctx.beginPath();
+        ctx.arc(Posizione[1].x, Posizione[1].y, Raggio, 0, (Math.PI)+1/4);
+        ctx.lineWidth = Spessore;
+        ctx.strokeStyle = Colori[1];
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(Posizione[1].x, Posizione[1].y, Raggio, (Math.PI)+1/4, (Math.PI/2)+1/4);
+        ctx.lineWidth = Spessore;
+        ctx.strokeStyle = Colori[1];
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(Posizione[1].x, Posizione[1].y, Raggio, (Math.PI)+1/4, (Math.PI*2));
+        ctx.lineWidth = Spessore;
+        ctx.strokeStyle = Colori[1];
+        ctx.stroke();
+        ctx.closePath();
+
+
+        // rosso
+        ctx.beginPath();
+        ctx.arc(Posizione[2].x, Posizione[2].y, Raggio, 0, (Math.PI) -1/4);
+        ctx.lineWidth = Spessore;
+        ctx.strokeStyle = Colori[2];
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(Posizione[2].x, Posizione[2].y, Raggio, (Math.PI)-1/4, (Math.PI*2));
+        ctx.lineWidth = Spessore;
+        ctx.strokeStyle = Colori[2];
+        ctx.stroke();
+        ctx.closePath();
+
+        
+
+        // giallo
+        ctx.beginPath();
+        ctx.arc(Posizione[3].x, Posizione[3].y, Raggio, 1/10, ((Math.PI)+(Math.PI/2))-1/5);
+        ctx.lineWidth = Spessore;
+        ctx.strokeStyle = Colori[3];
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(Posizione[3].x, Posizione[3].y, Raggio, ((Math.PI)+(Math.PI/2)), (Math.PI*2)-1/10);
+        ctx.lineWidth = Spessore;
+        ctx.strokeStyle = Colori[3];
+        ctx.stroke();
+        ctx.closePath();
+
+        // verde
+        ctx.beginPath();
+        ctx.arc(Posizione[4].x, Posizione[4].y, Raggio, 1/10, (Math.PI + (Math.PI /2))-1/5);
+        ctx.lineWidth = Spessore;
+        ctx.strokeStyle = Colori[4];
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(Posizione[4].x, Posizione[4].y, Raggio, (Math.PI+Math.PI/2), (2*Math.PI)-1/10);
+        ctx.lineWidth = Spessore;
+        ctx.strokeStyle = Colori[4];
+        ctx.stroke();
+        ctx.closePath();
+
+
+    </script>
+</body>
+</html>
