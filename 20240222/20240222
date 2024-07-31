@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <img src="20230711.jpeg" height="500" width="1500" />
+        <title>Cambia Stile</title>
+        <style>
+            #p 
+            {
+                font-size: 10px;
+                color: black;
+                font-family: 'Times New Roman', Times, serif;
+            }
+        </style>
+    </head>
+    <body style="background-color: darkgray; color: black; font-family: 'Times New Roman', Times, serif;">
+        <h1 style="text-align: center;">CAMBIA STILE</h1>
+    <select id="Selezione" onchange="CambiaColore()">
+        <option value="black">Nero</option>
+        <option value="aqua">Azzurro</option>
+        <option value="lightgreen">Verde Chiaro</option>
+        <option value="lightcoral">Corallo</option>
+        <option value="crimson">Rossiccio</option>
+        <option value="mediumpurple">Viola</option>
+        <option value="navy">Blu</option>
+        <option value="orange">Arancione</option>
+    </select>
+    <br>
+    <br>
+
+    <input type="radio" name="Dimensione" value="15" name="15" onclick="CambiaDimensione(this)">
+    <input type="radio" name="Dimensione" value="30" name="30" onclick="CambiaDimensione(this)">
+    <input type="radio" name="Dimensione" value="45" name="45" onclick="CambiaDimensione(this)">
+    <input type="radio" name="Dimensione" value="60" name="60" onclick="CambiaDimensione(this)">
+    <br>
+    <br>
+
+    <p id="p">Scusate, ma non ho idea di cosa scrivere, nè tantomeno ho la creatività di pensare. Tuttavia, bella la foto? L'ho scattata io</p>
+    
+
+    <script>
+        function CambiaColore()
+        {
+            var NuovoColore = document.getElementById("Selezione").value;
+            document.getElementById("p").style.color = NuovoColore;
+        }
+
+        function CambiaDimensione(radioButton)
+        {
+            var NuovaDimensione = radioButton.value;
+            document.getElementById("p").style.fontSize = NuovaDimensione + "px";
+        }
+
+    </script>
+</body>
+</html>
