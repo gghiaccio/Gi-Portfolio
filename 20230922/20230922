@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ESERCITAZIONE 1</title>
+    </head>
+
+    <body>
+        <br>       
+        <label for="print">Stampa testo</label>
+        <br>
+        <br>
+        <input type="text" id="pr" name="name">
+        <input type="button" value="conferma!" onclick="Stampa()">
+        <script>
+            function Stampa()
+            {
+                var Valore;
+                Valore=document.getElementById("pr").value;
+                document.getElementById("prgf").innerHTML=Valore;    
+            }
+        </script>
+        <p id="prgf">
+            
+        </p>
+    </body>
+</html>
