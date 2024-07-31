@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ESERCITAZIONE 2</title>
+</head>
+
+<body style="background-color: darkgray; color: black; font-family: 'Times New Roman', Times, serif;">
+    <img src="20231003cvimage.jpg" width="1450" height="300" />
+    <h1 style="text-align: center;">DATI PERSONALI</h1>
+    <h1 style="text-align: center;">________________</h1>
+
+    <label for="name">Inserire <b>Nome.</b></label> <br>
+    <input type="text" id="name"> <br> <br>
+
+    <label for="surname">Inserire <b>Cognome.</b></label> <br>
+    <input type="text" id="surname"> <br> <br>
+
+    <label>Selezionare <b>Genere.</b></label> <br>
+    <input type="radio" id="Female" name="Genere" value="Female"> 
+    <label for="Female">Donna</label> <br>
+
+    <input type="radio" id="Male" name="Genere" value="Male">
+    <label for="Male">Uomo</label> <br>
+
+    <input type="radio" id="ND" name="Genere" value="ND">
+    <label for="ND">Non specificato</label> <br> <br>
+
+    <label for="City">Selezionare <b>Città.</b></label> <br>
+    <input type="text" id="City"> <br> <br>
+
+    <label for="Address">Inserire <b>Indirizzo.</b></label> <br>
+    <input type="text" id="Address"> <br> <br>
+
+    <label for="ListaProv">Selezionare <b>Provincia.</b></label>
+    <select id="ListaProv">
+        <option value="AG">AG</option>
+        <option value="AL">AL</option>
+        <option value="AN">AN</option>
+        <option value="BS">BS</option>
+        <option value="MI">MI</option>
+        <option value="RO">RO</option>
+        <option value="NA">NA</option>
+    </select> <br>
+
+    <p>Inserire <b>Materie Valutate.</b></p>
+    <input type="checkbox" id="box1" value="Italiano">
+    <label for="box1"> Italiano</label> <br>
+
+    <input type="checkbox" id="box2" value="Storia">
+    <label for="box2"> Storia</label> <br>
+
+    <input type="checkbox" id="box3" value="Matematica">
+    <label for="box3"> Matematica</label> <br>
+
+    <input type="checkbox" id="box4" value="Inglese">
+    <label for="box4"> Inglese</label> <br>
+
+    <input type="checkbox" id="box5" value="Informatica">
+    <label for="box5"> Informatica</label> <br>
+
+    <input type="checkbox" id="box6" value="TPSIT">
+    <label for="box6"> TPSIT</label> <br> <br>
+
+    <input type="button" value="Conferma" onclick="SalvaDati()"> 
+
+    <script>
+        function SalvaDati() 
+        {
+            let Nome = document.getElementById("name").value;
+            let Cognome = document.getElementById("surname").value;
+            let Genere = document.querySelector('input[name="Genere"]:checked').value;
+            let Citta = document.getElementById("City").value;
+            let Indirizzo = document.getElementById("Address").value;
+            let Provincia = document.getElementById("ListaProv").value;
+            let MaterieValutate = [];
+
+            if (document.getElementById("box1").checked) MaterieValutate.push("Italiano");
+            if (document.getElementById("box2").checked) MaterieValutate.push("Storia");
+            if (document.getElementById("box3").checked) MaterieValutate.push("Matematica");
+            if (document.getElementById("box4").checked) MaterieValutate.push("Inglese");
+            if (document.getElementById("box5").checked) MaterieValutate.push("Informatica");
+            if (document.getElementById("box6").checked) MaterieValutate.push("TPSIT");
+
+            let DatiUtente = 
+            {
+                Nome: Nome,
+                Cognome: Cognome,
+                Genere: Genere,
+                Citta: Citta,
+                Indirizzo: Indirizzo,
+                Provincia: Provincia,
+                MaterieValutate: MaterieValutate
+            };
+
+            localStorage.setItem("DatiUtente", JSON.stringify(DatiUtente));
+            window.location.href = "localstoragevet";
+        }
+    </script>
+
+</body>
+
+</html>
