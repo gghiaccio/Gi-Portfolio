@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <body style="background-color:darkgrey; color:black">
+        <img src="20231003cvimage.jpg" width="1450" height="300"></img>
+    <head>
+        <title>ESERCITAZIONE 2</title>
+    </head>
+<h1 style="text-align: center;"> Dati personali </h1>
+<h1 style="text-align: center;"> __________________</h1>
+
+
+   
+
+    <label for="print"> Inserire <b> Nome.</b></label> <br>
+    <input type="text" id="name" name="nome" onclick="Stampa()" > 
+    <br>
+    <br>
+
+
+
+    <label for="print"> Inserire <b>Cognome.</b></label> <br>
+    <input type="text" id="surname" name="cognome"  onclick="Stampa()">
+    
+   
+    <br>
+    <br>
+
+
+    <label for="print">Selezionare <b>Genere.</b></label> <br>
+    <input type="radio" id="Female" name="Genere"  value="Female" onclick="onClickHandler(document.getElementById('box1').value)";> 
+    <label for="Female"> Donna</label> <br>
+   
+    <input type="radio" id="Male" name="Genere"  value="Male" onclick="Stampa()">
+    <label for="Male"> Uomo</label> <br>
+
+ 
+    <input type="radio" id="ND" name="Genere"  value="ND" onclick="Stampa()">
+    <label for="ND"> Preferisco non specificare</label> <br>
+    <br>    
+
+
+    <label for="City">Selezionare <b>Città.</b></label> <br>
+    <input type="text" id="City" name="Città" onclick="Stampa()">
+    <br>
+    <br>
+
+    <label for="Address">Inserire <b>Indirizzo.</b></label> <br>
+    <input type="text" id="Address" name="indirizzo" onclick="Stampa()">
+    <br>
+    <br>
+
+
+
+    <label for ="Provincia">Selezionare <b>Provincia.</b></label>
+    <select id="ListaProv" onclick="Stampa()">
+        <option value="AG">AG</option>
+        <option value="AL">AL</option>
+        <option value="AN">AN</option>
+        <option value="AQ">AO</option>
+        <option value="AR">AR</option>
+        <option value="AP">AP</option>
+        <option value="AT">AT</option>
+        <option value="AV">AV</option>
+        <option value="BA">BA</option>
+        <option value="BT">BT</option>
+        <option value="BL">BL</option>
+        <option value="BN">BN</option>
+        <option value="BG">BG</option>
+        <option value="BI">BI</option>
+        <option value="BO">BO</option>
+        <option value="BZ">BZ</option>
+        <option value="BS">BS</option>
+        <option value="BR">BR</option>
+        <option value="CA">CA</option>
+        <option value="CL">CL</option>
+        <option value="CB">CB</option>
+        <option value="CE">CE</option>
+        <option value="CT">CT</option>
+        <option value="CZ">CZ</option>
+        <option value="CH">CH</option>
+        <option value="CO">CO</option>
+        <option value="CS">CS</option>
+        <option value="CR">CR</option>
+        <option value="KR">KR</option>
+        <option value="CN">CN</option>
+        <option value="EN">EN</option>
+        <option value="MI">MI</option>
+        <option value="MN">MN</option>
+        <option value="RO">RO</option>
+        <option value="VV">VV</option>
+    </select>
+
+
+
+
+
+
+    <p>Inserire <b> Materie Valutate.</b></p> 
+    <input type="checkbox" id="box1" name="Italiano" value="Italiano" onclick="onClickHandler(document.getElementById('box1').value);">
+    <label for="box1"> Italiano</label><br>
+  
+
+    <input type="checkbox" id="box2" name="Storia" value="Storia" onclick="onClickHandler(document.getElementById('box2').value);">
+    <label for="box2"> Storia</label><br>
+ 
+
+    <input type="checkbox" id="box3" name="Matematica" value="Matematica" onclick="onClickHandler(document.getElementById('box3').value);">
+    <label for="box3"> Matematica</label><br>
+  
+
+    <input type="checkbox" id="box4" name="Inglese" value="Inglese" onclick="onClickHandler(document.getElementById('box4').value);">
+    <label for="box4"> Inglese</label><br>
+
+
+    <input type="checkbox" id="box5" name="Informatica" value="Informatica" onclick="onClickHandler(document.getElementById('box5').value);">
+    <label for="box5"> Informatica</label><br>
+
+
+    <input type="checkbox" id="box6" name="TPSIT" value="TPSIT" onclick="onClickHandler(document.getElementById('box6').value);">
+    <label for="box6"> TPSIT</label><br>
+   
+    <br>
+    <input type="button" value="Conferma." onclick="Stampa()" style="color:black; background-color: white; border-color: black;" >
+
+
+    <h2>Scelte effettuate</h2>
+    <p> <b>Nome:</b></p>
+    <p id= "textname1"> </p>
+    <p><b>Cognome:</b></p>
+    <p id="textsurname"> </p>
+    <p><b>Genere:</b></p>
+    <p id="textgender"></p>
+    <p><b>Città:</b></p>
+    <p id="textcity"></p>
+    <p><b>Indirizzo:</b></p>
+    <p id="textaddress"></p>
+    <p><b>Provincia:</b></p>
+    <p id="textprovince"></p>
+    <p><b>Materie Valutate:</b></p>
+    <p id="text1"></p>
+    <p id="text2"></p>
+    <p id="text3"></p>
+    <p id="text4"></p>
+    <p id="text5"></p>
+    <p id="text6"></p>
+
+    <script>
+            function Stampa()
+            {
+                //nome
+                var textname1 = document.getElementById("name").value;
+                document.getElementById("textname1").innerHTML = textname1;
+                    
+                //cognome
+                var textsurname = document.getElementById("surname").value;
+                document.getElementById("textsurname").innerHTML = textsurname;
+
+
+                var textcity = document.getElementById("City").value;
+                document.getElementById("textcity").innerHTML = textcity;
+
+                var textaddress = document.getElementById("Address").value;
+                document.getElementById("textaddress").innerHTML = textaddress;
+
+                var prov = document.getElementById("ListaProv").value;
+                document.getElementById("textprovince").innerHTML = prov;
+
+                //genere 
+                var Gen = document.getElementsByName("Genere");
+                var SelectedGenre;
+                for (var i = 0; i < Gen.length; i++) 
+                {
+                        if (Gen[i].checked) 
+                        {
+                            SelectedGenre = Gen[i].value;
+                             break;
+                        }
+                }
+                document.getElementById("textgender").innerHTML = SelectedGenre
+
+
+                //italiano 
+                var checkBox1 = document.getElementById("box1");
+                var text1 = document.getElementById("text1");
+                if (checkBox1.checked == true)
+                {
+                    document.getElementById("text1").innerHTML="Italiano";
+                } 
+
+                //storia
+                var checkBox2 = document.getElementById("box2");
+                var text2 = document.getElementById("text2");
+                if (checkBox2.checked == true)
+                {
+                    document.getElementById("text2").innerHTML="Storia";
+                } 
+
+                //matematica
+
+                var checkBox3 = document.getElementById("box3");
+                var text3 = document.getElementById("text3");
+                if (checkBox3.checked == true)
+                {
+                    document.getElementById("text3").innerHTML="Matematica";
+                } 
+                
+
+                //inglese
+                var checkBox4 = document.getElementById("box4");
+                var text4 = document.getElementById("text4");
+                if (checkBox4.checked == true)
+                {
+                    document.getElementById("text4").innerHTML="Inglese";
+                } 
+                
+
+                //informatica
+                var checkBox5 = document.getElementById("box5");
+                var text5 = document.getElementById("text5");
+                if (checkBox5.checked == true)
+                {
+                    document.getElementById("text5").innerHTML="Informatica";
+                } 
+                
+
+                //tps
+                var checkBox6 = document.getElementById("box6");
+                var text6 = document.getElementById("text6");
+                if (checkBox6.checked == true)
+                {
+                    document.getElementById("text6").innerHTML="TPSIT";
+                } 
+                
+            }
+       
+    </script>
+    </body>
+</html>
