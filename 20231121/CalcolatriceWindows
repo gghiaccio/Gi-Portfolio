@@ -1,0 +1,231 @@
+<html>
+ <body style="background-color: grey; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+
+<head>
+    <title>Calcolatrice.</title>
+</head>
+<h1 style="text-align: left; "> Calculator. </h1>
+<h1 style="text-align: left;"> __________________</h1>
+
+
+
+<br>
+<input type="text" id="display" name="display" style="border-color: black; border-style:solid; border-radius: 10px; height: 30%; width: 46%"> 
+<br>
+<br>
+<input type="button" value="+" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60; border-style: solid; border-radius: 10px;" onclick="Addition()"> 
+<input type="button" value="-" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="Subtraction()">
+<input type="button" value="*" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="Multiplication()">
+<input type="button" value="/" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80;height: 60; border-style: solid; border-radius: 10px;" onclick="Division()"><br>
+<br>
+<input type="button" value="%" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="Perc()">
+<input type="button" value="CE" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80;height: 60; border-style: solid; border-radius: 10px;" onclick="Cancel()">
+<input type="button" value="1/x" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80;height: 60; border-style: solid; border-radius: 10px;" onclick="Fraz()">
+<input type="button" value="<-" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="LastDigit()"><br>
+<br>
+<input type="button" value="x^2" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="Elev()">
+<input type="button" value="√x" style="border: 10%; border-color: white; background-color: lightskyblue; width:80; height: 60;border-style: solid; border-radius: 10px;" onclick="SquareRoot()">
+<input type="button" value="=" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="Equals()">
+<input type="button" value="1" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="one()"><br>
+<br>
+<input type="button" value="2" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60; border-style: solid; border-radius: 10px;" onclick="two()">
+<input type="button" value="3" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="three()">
+<input type="button" value="4" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="four()">
+<input type="button" value="5" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="five()"><br>
+<br>
+<input type="button" value="6" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="six()">
+<input type="button" value="7" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="seven()">
+<input type="button" value="8" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="eight()">
+<input type="button" value="9" style="border: 10%; border-color: white; background-color: lightskyblue; width: 80; height: 60;border-style: solid; border-radius: 10px;" onclick="nine()"><br>
+<br>
+<input type="button" value="0" style="border: 10%; border-color: white; height: 60; background-color: lightskyblue; width: 80; border-style: solid; border-radius: 10px;" onclick="zero()">
+<input type="button" value="," style="border: 10%; border-color:  white; background-color: lightskyblue; height: 60; width: 80; border-style: solid; border-radius: 10px;" onclick="comma()">
+
+
+
+
+
+<script>
+var Value = "";
+
+function ValueonScreen() 
+{
+    document.getElementById("display").value = Value;
+}
+
+function zero() 
+{
+    Value += "0";
+    ValueonScreen();
+}
+
+function one() 
+{
+    Value += "1";
+    ValueonScreen();
+}
+
+function two() 
+{
+    Value += "2";
+    ValueonScreen();
+}
+
+function three() 
+{
+    Value += "3";
+    ValueonScreen();
+}
+
+function four() 
+{
+    Value += "4";
+    ValueonScreen();
+}
+
+function five() 
+{
+    Value += "5";
+    ValueonScreen();
+}
+
+function six() 
+{
+    Value += "6";
+    ValueonScreen();
+}
+
+function seven() 
+{
+    Value += "7";
+    ValueonScreen();
+}
+
+function eight() 
+{
+    Value += "8";
+    ValueonScreen();
+}
+
+function nine() 
+{
+    Value += "9";
+    ValueonScreen();
+}
+
+function comma() 
+{
+    Value += ".";
+    ValueonScreen();
+}
+
+function Addition() 
+{
+    x = parseFloat(Value);
+    operation = "+";
+    Value = "";
+    ValueonScreen();
+}
+
+function Subtraction() 
+{
+    x = parseFloat(Value);
+    operation = "-";
+    Value = "";
+    ValueonScreen();
+}
+
+function Multiplication() 
+{
+    x = parseFloat(Value);
+    operation = "*";
+    Value = "";
+    ValueonScreen();
+}
+
+function Division() 
+{
+    x = parseFloat(Value);
+    operation = "/";
+    Value = "";
+    ValueonScreen();
+}
+
+function Fraz() 
+{
+    x = parseFloat(Value);
+    result = 1 / x;
+    Value = result.toString();
+    ValueonScreen();
+}
+
+function LastDigit() 
+{
+    Value = Value.slice(0, -1);
+    ValueonScreen();
+}
+
+function Elev() 
+{
+    x = parseFloat(Value);
+    result = Math.pow(x, 2);
+    Value = result.toString();
+    ValueonScreen();
+}
+
+function SquareRoot() 
+{
+    x = parseFloat(Value);
+    result = Math.sqrt(x);
+    Value = result.toString();
+    ValueonScreen();
+}
+
+function Cancel() 
+{
+    Value = "";
+    ValueonScreen();
+}
+
+function Perc() 
+{
+    x = parseFloat(Value);
+    result = x / 100;
+    Value = result.toString();
+    ValueonScreen();
+}
+
+function Equals() {
+    y = parseFloat(Value);
+
+    if (operation === "+") 
+    {
+        result = x + y;
+    } 
+    else if (operation === "-") 
+    {
+        result = x - y;
+    } 
+    else if (operation === "*") 
+    {
+        result = x * y;
+    } 
+    else if (operation === "/") 
+    {
+        result = x / y;
+    }
+
+    Value = result.toString();
+    ValueonScreen();
+}
+
+   
+
+
+
+
+</script>
+
+</body>
+
+</html>
