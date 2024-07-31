@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV</title>
+</head>
+<body style="background-color: grey; font-family: 'Times New Roman', Times, serif;">
+    <img src="20231003cvimage.jpg" width="1450" height="300" />
+    <h1 style="text-align: center;"><b>CSV.</b></h1>
+    <h1 style="text-align: center;">-------------</h1>
+    <label for="Input">Scegliere il file <b>CSV.</b></label>
+    <br>
+    <input type="file" id="Input" accept=".csv">
+    <br><br>
+    <div id="ContenitoreTabella"></div>
+
+    <script>
+        // Aggiungi un event listener per il cambio del file
+        document.getElementById("Input").addEventListener('change', Gestiscidocumento);
+        
+        // Funzione per gestire il file selezionato
+        function Gestiscidocumento(event)
+        {
+            // Ottieni il file selezionato
+            var File = event.target.files[0];
+            // Crea un FileReader per leggere il file
+            var Lettore = new FileReader();
+
+            // Richiamata quando il file è stato letto
+            Lettore.onload = function(event)
+            {
+                // Ottieni il contenuto del file
+                var ContenutoFile = event.target.result;
+                // Crea la tabella dal contenuto del file
+                var Tabella = CreadaFile(ContenutoFile);
+                // Inserisci la tabella nel divvvv
+                document.getElementById('ContenitoreTabella').innerHTML = Tabella;
+            }
+            // Leggi il file come testo
+            Lettore.readAsText(File);
+        }
+
+        function CreadaFile(CSV)
+        {
+            // Divide il CSV in righe
+            //ps: con solo split non funzionava
+            var Righe = CSV.trim().split('\n');
+            // Inizializza la stringa per la tabella
+            var Tabella = '<table border="1">';
+
+            // x ogni riga
+            Righe.forEach(row => 
+            {
+                Tabella += '<tr>';
+
+                // Divide la riga in colonne
+                var Colonne = row.split(';');
+
+                
+                Colonne.forEach(column =>
+                {
+                    Tabella += '<td>' + column + '</td>';
+                });
+
+                Tabella += '</tr>';
+            });
+
+            Tabella += '</table>';
+
+            return Tabella;
+        }
+
+    </script>
+</body>
+</html>
