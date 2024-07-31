@@ -1,0 +1,74 @@
+<html>
+ <body style="background-color: grey; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+
+<head>
+    <title>Calcolatrice.</title>
+</head>
+<h1 style="text-align: left; "> Calculator. </h1>
+<h1 style="text-align: left;"> __________________</h1>
+
+
+<label for="INSNUM"> Inserire <b> Numeri.</b></label> <br>
+<input type="text" id="firstnumber" name="firstnumber" style="border-color: black; border-style:solid; border-radius: 10px;"> 
+<br>
+<br>
+<input type="text" id="secondnumber" name="secondnumber" style="border-color: black; border-style:solid; border-radius: 10px;" > 
+<br>
+<br>
+<input type="button" value="+" style="border: 10%; border-color: white; background-color: lightskyblue; width: 50; border-style: solid; border-radius: 10px;" onclick="Addition()"> 
+<input type="button" value="-" style="border: 10%; border-color: white; background-color: lightskyblue; width: 50; border-style: solid; border-radius: 10px;" onclick="Subtraction()">
+<input type="button" value="*" style="border: 10%; border-color: white; background-color: lightskyblue; width: 50; border-style: solid; border-radius: 10px;" onclick="Multiplication()">
+<input type="button" value="/" style="border: 10%; border-color: white; background-color: lightskyblue; width: 50; border-style: solid; border-radius: 10px;" onclick="Division()">
+
+<div style="border: 10%; border-radius: 5%; border-color:white">
+    <p> <b>Risultato:</b></p>
+        <p id= "addic"> </p>
+        <p id= "subtrac"> </p>
+        <p id= "multipl"> </p>
+        <p id= "divis"> </p>
+    </div>
+
+<script>
+    
+
+    function Addition()
+    {
+        var x = document.getElementById("firstnumber").value;
+        var y = document.getElementById("secondnumber").value;
+        x = parseInt(x);
+        y = parseInt(y);
+        var sum = x+y;
+        document.getElementById("addic").innerHTML = sum;
+    }
+
+    function Subtraction()
+    {
+        var x = document.getElementById("firstnumber").value;
+        var y = document.getElementById("secondnumber").value;
+        var sub = x-y;
+        document.getElementById("subtrac").innerHTML = sub;
+    }
+
+    function Division()
+    {
+        var x = document.getElementById("firstnumber").value;
+        var y = document.getElementById("secondnumber").value;
+        var div = x/y;
+        document.getElementById("divis").innerHTML = div;
+    }
+
+    function Multiplication()
+    {
+        var x = document.getElementById("firstnumber").value;
+        var y = document.getElementById("secondnumber").value;
+        var mult = x*y;
+        document.getElementById("multipl").innerHTML = mult;
+    }
+
+
+
+</script>
+
+</body>
+
+</html>
