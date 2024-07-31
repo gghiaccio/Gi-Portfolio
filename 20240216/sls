@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista della spesa</title>
+</head>
+<body style="background-color: darkgray; color: black; font-family: 'Times New Roman', Times, serif;">
+    
+    <picture>
+        <source srcset="imag800.jpeg" media="(max-width: 800px)">
+        <img src="immagineprincipale.jpeg"  style="width:auto;">
+      </picture>
+    <h1 style="text-align: center;">LISTA della <b>SPESA</b></h1>
+
+    <div id="listaSpesa"></div>
+
+    <script>
+        window.onload = function() 
+        {
+            var lista = document.getElementById("listaSpesa");
+           var listaSpesa = JSON.parse(localStorage.getItem("listaSpesa"));
+           if (listaSpesa && listaSpesa.length > 0) 
+           {
+            listaSpesa.forEach(function(item) 
+            {
+            var listItem = document.createElement("div");
+            listItem.textContent = item;
+
+            var removeButton = document.createElement("button");
+            removeButton.textContent = "-";
+            removeButton.onclick = function() 
+            {
+            remove(this.parentElement, this); 
+            };
+
+            listItem.appendChild(removeButton);
+            lista.appendChild(listItem);
+            });
+            }
+        };
+
+        function remove(element, button)
+        {
+            var lista = document.getElementById("listaSpesa");
+            lista.removeChild(element);
+            lista.removeChild(button);
+        }
+    </script>
+</body>
+</html>
