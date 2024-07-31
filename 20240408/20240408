@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tabella Dinamica</title>
+    </head>
+    <body style="background-color: grey;">
+        <h1 style="text-align: center;">Tabella <b>Dinamica.</b></h1>
+        <br>
+
+        <label for="Righe">Inserire Numero Righe</label>
+        <input type = "number" id="righe">
+        <br>
+        <label for="Colonne">Inserire Numero Colonne</label>
+        <input type = "number" id="colonne">
+        <br>
+        <table id="Tabella"></table>
+        <br>
+        <button value="Genera Tabella" onclick="CreaTabella()">Genera Tabella.</button>
+        <br>
+        <input type="radio" onclick="DivisibileperDUE()" name="Filtro">Colora divisibili per due </input>
+        <br>
+        <input type="radio" onclick="DivisibileperTRE()" name="Filtro">Colora divisibili per tre </input>
+        <br>
+        <input type="radio" onclick="DivisibileperQUATTRO()" name="Filtro">Colora divisibili per quattro </input>
+        <br>
+        <input type="radio" onclick="DivisibileperCINQUE()" name="Filtro">Colora divisibili per cinque </input>
+        <br>
+        <input type="radio" onclick="DivisibileperSEI()" name="Filtro">Colora divisibili per sei </input>
+        <br>
+        <input type="radio" onclick="DivisibileperSETTE()" name="Filtro">Colora divisibili per sette </input>
+        <br>
+        <input type="radio" onclick="DivisibileperNOVE()" name="Filtro">Colora divisibili per nove </input>
+        
+        
+
+        <script>
+            function CreaTabella()
+            {
+                var Righe = document.getElementById("righe").value;
+                var Colonne = document.getElementById("colonne").value;
+
+                var Space = "";
+                var Value=0;
+                for(var i = 0; i<Righe; i++)
+                {
+                    Space = Space + "<tr>";
+                    for(var j=0; j<Colonne; j++)
+                    {
+                        Value = Math.ceil(Math.random()*100);
+                        Space= Space + "<td>" + Value + "</td>";
+                    }
+                    Space += "</tr>";
+                }
+                document.getElementById("Tabella").innerHTML = Space;
+            }
+
+            function DivisibileperDUE() 
+            {
+                var Filtro = document.getElementsByTagName("td");
+                for(var i=0; i<Filtro.length; i++)
+                {
+                    Filtro[i].style.color="black";
+                    if(parseInt(Filtro[i].innerHTML) %2 === 0)
+                    {
+                        Filtro[i].style.color="red";
+                    }
+                }
+            }
+            function DivisibileperTRE() 
+            {
+                var Filtro = document.getElementsByTagName("td");
+                for(var i=0; i<Filtro.length; i++)
+                {
+                    Filtro[i].style.color="black";
+                    if(parseInt(Filtro[i].innerHTML) %3 === 0)
+                    {
+                        Filtro[i].style.color="red";
+                    }
+                }
+            }
+            function DivisibileperQUATTRO() 
+            {
+                var Filtro = document.getElementsByTagName("td");
+                for(var i=0; i<Filtro.length; i++)
+                {
+                    Filtro[i].style.color="black";
+                    if(parseInt(Filtro[i].innerHTML) %4 === 0)
+                    {
+                        Filtro[i].style.color="red";
+                    }
+                }
+            }
+            function DivisibileperCINQUE() 
+            {
+                var Filtro = document.getElementsByTagName("td");
+                for(var i=0; i<Filtro.length; i++)
+                {
+                    Filtro[i].style.color="black";
+                    if(parseInt(Filtro[i].innerHTML) %5 === 0)
+                    {
+                        Filtro[i].style.color="red";
+                    }
+                }
+            }
+                function DivisibileperSEI() 
+            {
+                var Filtro = document.getElementsByTagName("td");
+                for(var i=0; i<Filtro.length; i++)
+                {
+                    Filtro[i].style.color="black";
+                    if(parseInt(Filtro[i].innerHTML) %6 === 0)
+                    {
+                        Filtro[i].style.color="red";
+                    }
+                }
+            }
+            
+            function DivisibileperSETTE() 
+            {
+                var Filtro = document.getElementsByTagName("td");
+                for(var i=0; i<Filtro.length; i++)
+                {
+                    Filtro[i].style.color="black";
+                    if(parseInt(Filtro[i].innerHTML) %7 === 0)
+                    {
+                        Filtro[i].style.color="red";
+                    }
+                }
+            }
+            function DivisibileperNOVE() 
+            {
+                var Filtro = document.getElementsByTagName("td");
+                for(var i=0; i<Filtro.length; i++)
+                {
+                    Filtro[i].style.color="black";
+                    if(parseInt(Filtro[i].innerHTML) %9 === 0)
+                    {
+                        Filtro[i].style.color="red";
+                    }
+                }
+            }
+
+        </script>
+    </body>
+</html>
