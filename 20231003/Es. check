@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <body style="background-color:darkgrey; color:black">
+        <img src="20231003cvimage.jpg" width="1450" height="300"></img>
+    <head>
+        <title>ESERCITAZIONE 2</title>
+    </head>
+<h1 style="text-align: center;"> Dati personali </h1>
+<h1 style="text-align: center;"> __________________</h1>
+
+
+   
+
+    <label for="print"> Inserire <b> Nome.</b></label> <br>
+    <input type="text" id="name" name="nome" onclick="Stampa()" > 
+    <p id= "textname1"> </p>
+    <br>
+    <br>
+
+    <label for="print"> Inserire <b>Cognome.</b></label> <br>
+    <input type="text" id="surname" name="cognome"  onclick="Stampa()">
+    <p id="textsurname"> </p>
+    <br>
+    <br>
+
+    <p>Inserire <b> Materie Valutate.</b></p> 
+    <input type="checkbox" id="box1" name="Italiano" value="Italiano" onclick="onClickHandler(document.getElementById('box1').value);">
+    <label for="mat1"> Italiano</label><br>
+    <p id="text1"></p>
+
+    <input type="checkbox" id="box2" name="Storia" value="Storia" onclick="onClickHandler(document.getElementById('box2').value);">
+    <label for="mat1"> Storia</label><br>
+    <p id="text2"></p>
+
+    <input type="checkbox" id="box3" name="Matematica" value="Matematica" onclick="onClickHandler(document.getElementById('box3').value);">
+    <label for="mat1"> Matematica</label><br>
+    <p id="text3"></p>
+
+    <input type="checkbox" id="box4" name="Inglese" value="Inglese" onclick="onClickHandler(document.getElementById('box4').value);">
+    <label for="mat1"> Inglese</label><br>
+    <p id="text4"></p>
+
+    <input type="checkbox" id="box5" name="Informatica" value="Informatica" onclick="onClickHandler(document.getElementById('box5').value);">
+    <label for="mat1"> Informatica</label><br>
+    <p id="text5"></p>
+
+    <input type="checkbox" id="box6" name="TPSIT" value="TPSIT" onclick="onClickHandler(document.getElementById('box6').value);">
+    <label for="mat1"> TPSIT</label><br>
+    <p id="text6"></p>
+    <br>
+    <input type="button" value="Conferma." onclick="Stampa()" style="color:black; background-color: white; border-color: black;" >
+
+    <script>
+            function Stampa()
+            {
+                //nome
+                    var textname1 = document.getElementById("name").value;
+                    document.getElementById("textname1").innerHTML = textname1
+                    
+                //cognome
+                var textsurname = document.getElementById("surname").value;
+                document.getElementById("textsurname").innerHTML = textsurname;
+
+                //italiano 
+                var checkBox1 = document.getElementById("box1");
+                var text1 = document.getElementById("text1");
+                if (checkBox1.checked == true)
+                {
+                    document.getElementById("text1").innerHTML="vero";
+                } 
+                else 
+                {
+                    document.getElementById("text1").innerHTML="falso";
+                }
+
+                //storia
+                var checkBox2 = document.getElementById("box2");
+                var text2 = document.getElementById("text2");
+                if (checkBox2.checked == true)
+                {
+                    document.getElementById("text2").innerHTML="vero";
+                } 
+                else 
+                {
+                    document.getElementById("text2").innerHTML="falso";
+                }
+
+                //matematica
+
+                var checkBox3 = document.getElementById("box3");
+                var text3 = document.getElementById("text3");
+                if (checkBox3.checked == true)
+                {
+                    document.getElementById("text3").innerHTML="vero";
+                } 
+                else 
+                {
+                    document.getElementById("text3").innerHTML="falso";
+                }
+
+                //inglese
+                var checkBox4 = document.getElementById("box4");
+                var text4 = document.getElementById("text4");
+                if (checkBox4.checked == true)
+                {
+                    document.getElementById("text4").innerHTML="vero";
+                } 
+                else 
+                {
+                    document.getElementById("text4").innerHTML="falso";
+                }
+
+                //informatica
+                var checkBox5 = document.getElementById("box5");
+                var text5 = document.getElementById("text5");
+                if (checkBox5.checked == true)
+                {
+                    document.getElementById("text5").innerHTML="vero";
+                } 
+                else 
+                {
+                    document.getElementById("text5").innerHTML="falso";
+                }
+
+                //tps
+                var checkBox6 = document.getElementById("box6");
+                var text6 = document.getElementById("text6");
+                if (checkBox6.checked == true)
+                {
+                    document.getElementById("text6").innerHTML="vero";
+                } 
+                else 
+                {
+                    document.getElementById("text6").innerHTML="falso";
+                }
+            }
+       
+    </script>
+    </body>
+</html>
