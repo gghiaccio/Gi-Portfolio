@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Modifica Paragrafo</title>
+</head>
+<body style="background-color: darkgray; color: black; font-family: 'Times New Roman', Times, serif;">
+
+<h1>MODIFICA <b>paragrafo.<b></h1>
+<p>Paragrafo 1: Ciao</p>
+<p>Paragrafo 2: Come</p>
+<p>Paragrafo 3: Stai</p>
+<p>Paragrafo 4: ?</p>
+<p>Paragrafo 5: Modifica</p>
+<p>Paragrafo 6: Questi</p>
+<p>Paragrafo 7: Paragrafi</p>
+<p>Paragrafo 8: Inserendo</p>
+<p>Paragrafo 9: Il nuovo</p>
+<p>Paragrafo 10: Testo</p>
+
+<script>
+  
+  function ModificaParagrafo() 
+  {
+    
+    var numeroParagrafo = document.getElementById("numeroParagrafo").value;
+    var nuovoTesto = document.getElementById("nuovoTesto").value;
+
+    
+    if (numeroParagrafo >= 1 && numeroParagrafo <= 10) {
+      var paragrafi = document.getElementsByTagName("p");
+
+      paragrafi[numeroParagrafo - 1].textContent = "Paragrafo " + numeroParagrafo + ": " + nuovoTesto;
+    } 
+    else 
+    {
+      alert("Inserisci un numero di paragrafo valido (da 1 a 10).");
+    }
+  }
+</script>
+
+
+<label for="numeroParagrafo">Numero Paragrafo:</label>
+<input type="number" id="numeroParagrafo" min="1" max="10">
+
+<label for="nuovoTesto">Nuovo Testo:</label>
+<input type="text" id="nuovoTesto">
+
+<button onclick="ModificaParagrafo()">Modifica Paragrafo</button>
+
+</body>
+</html>
