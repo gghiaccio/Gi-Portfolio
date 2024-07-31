@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTA della SPESA</title>
+</head>
+<body style="background-color: darkgray; color: black; font-family: 'Times New Roman', Times, serif;">
+    <picture>
+        <source srcset="imag800.jpeg" media="(max-width: 800px)">
+        <img src="immagineprincipale.jpeg"  style="width:auto;">
+    </picture>
+    <h1 style="text-align: center;">LISTA della <b>SPESA</b></h1>
+
+    <div id="inputContainer">
+    </div>
+
+    <input type="button" id="AddButton" onclick="addInput()" value="+">
+    <br>
+    <br>
+    <input type="button" id="SendButton" onclick="saveToLocalStorage()" value="Submit">
+    <br>
+
+    <script>
+        var counter = 0;
+
+        function addInput() 
+        {
+            counter++;
+            var inputContainer = document.getElementById('inputContainer');
+            var inputElement = document.createElement('input');
+            inputElement.type = 'text';
+            inputElement.id = 'Elemento' + counter;
+            inputContainer.appendChild(inputElement);
+
+            var brElement = document.createElement('br'); 
+            inputContainer.appendChild(brElement); 
+
+            var addButton = document.getElementById('AddButton');
+            inputContainer.insertBefore(addButton, inputElement.nextSibling);
+        }
+
+        function saveToLocalStorage() 
+        {
+            var listaSpesa = [];
+            for (var i = 1; i <= counter; i++) 
+            {
+                var elementValue = document.getElementById("Elemento" + i).value;
+                listaSpesa.push(elementValue);
+            }
+            localStorage.setItem("listaSpesa", JSON.stringify(listaSpesa));
+            window.location.href = "sls";
+        }
+    </script>
+</body>
+</html>
+
+</body>
+</html>
