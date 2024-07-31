@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Visualizzazione Dati</title>
+</head>
+
+<body style="background-color: darkgrey; color: black; font-family: 'Times New Roman', Times, serif;">
+    <h1 style="text-align: center;"> Dati personali salvati</h1>
+    <h1 style="text-align: center;"> __________________</h1>
+
+    <p><b>Nome:</b></p>
+    <p id="TextNome"></p>
+
+    <p><b>Cognome:</b></p>
+    <p id="TextCognome"></p>
+
+    <p><b>Genere:</b></p>
+    <p id="TextGenere"></p>
+
+    <p><b>Città:</b></p>
+    <p id="TextCitta"></p>
+
+    <p><b>Indirizzo:</b></p>
+    <p id="TextIndirizzo"></p>
+
+    <p><b>Provincia:</b></p>
+    <p id="TextProvincia"></p>
+
+    <p><b>Materie Valutate:</b></p>
+    <p id="TextMaterieValutate"></p>
+
+    <input type="button" onclick="Leggi()" value="Visualizza Dati">
+
+    <script>
+        function Leggi() 
+        {
+            let DatiUtente = JSON.parse(localStorage.getItem("DatiUtente"));
+            document.getElementById("TextNome").innerHTML = DatiUtente.Nome;
+            document.getElementById("TextCognome").innerHTML = DatiUtente.Cognome;
+            document.getElementById("TextGenere").innerHTML = DatiUtente.Genere;
+            document.getElementById("TextCitta").innerHTML = DatiUtente.Citta;
+            document.getElementById("TextIndirizzo").innerHTML = DatiUtente.Indirizzo;
+            document.getElementById("TextProvincia").innerHTML = DatiUtente.Provincia;
+            document.getElementById("TextMaterieValutate").innerHTML = DatiUtente.MaterieValutate.join(", ");
+        }
+    </script>
+</body>
+
+</html>
