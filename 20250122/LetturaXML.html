@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html>
 <head>
     <title>Lettura XML Con Selezione</title>
     <img src="20231003cvimage.jpg" width="1450" height="300" />
@@ -58,7 +58,7 @@
         document.addEventListener("DOMContentLoaded", function () 
         {
             let xhr = new XMLHttpRequest();
-            let indirizzuccio = "20250122/Anagrafica.xml";
+            let indirizzuccio = "https://raw.githubusercontent.com/gghiaccio/Gi-Portfolio/20250122/Anagrafica.xml";
 
             xhr.open("GET", indirizzuccio, true);
             xhr.onload = function () 
