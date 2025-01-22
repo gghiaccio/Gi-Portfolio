@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Lettura XML Con Selezione</title>
+    <img src="20231003cvimage.jpg" width="1450" height="300" />
+    <style>
+        /* prima volta che sperimento facendo il css separato, vabbè, mi sembra molto più clean e ordinato */
+        body 
+        
+        {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            margin: 20px;
+            background-color: grey;
+            text-align:center;
+        }
+
+        table 
+        {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td 
+        {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th 
+        {
+            background-color: grey;
+        }
+
+        select 
+        {
+            margin-bottom: 20px;
+            padding: 5px;
+            font-size: 16px;
+            color:aqua;
+        }
+    </style>
+</head>
+
+
+<body>
+    <h1>Lettura File XML</h1>
+    
+    <select id="Selezionando"></select>
+    <div id="risultatino"></div>
+
+    <script>
+
+        /* p.s. : poichè ho puntato sulle pages di github, ho deciso di iniziare a commentare tutto il codice, sia per chiarezza 
+    di chi lo leggerà, sia per rivederlo seguento una "traccia" più in là, magari anche tra qualche anno */
+
+
+        document.addEventListener("DOMContentLoaded", function () 
+        {
+            let xhr = new XMLHttpRequest();
+            let indirizzuccio = "https://raw.githubusercontent.com/gghiaccio/Gi-Portfolio/20250122/Anagrafica.xml";
+
+            xhr.open("GET", indirizzuccio, true);
+            xhr.onload = function () 
+            {
+                if (xhr.status === 200) 
+                {
+                    const parser = new DOMParser();
+                    /* uso il dom parser per convertire dall'xml al dom, almeno posso accedere ai tag name che ho usato nel file xml */
+                    const xmlDoc = parser.parseFromString(xhr.responseText, "application/xml");
+
+                    /* ottengo info dal nome del tag*/
+                    const informazioni = xmlDoc.getElementsByTagName("Informazioni");
+
+                    /* è il selector per selezionare la scelta della personcina. In realtà non era specificato nella consegna,
+                    ma l'ho fatto per scelta personale, per fare un lavoro più clean */
+                    const selettino = document.getElementById("Selezionando");
+
+                    /*ciclo everything per associare le informations in base alla persona selezionata */
+                    for (let i = 0; i < informazioni.length; i++) 
+                    {
+                        const nome = informazioni[i].getElementsByTagName("nome")[0].textContent;
+                        const cognome = informazioni[i].getElementsByTagName("cognome")[0].textContent;
+
+                        /* in realtà qua ho provato a creare la const dell'opzione in maniera differente, just to try, sto sperimentando*/
+                        const option = document.createElement("option");
+                        option.value = i;
+                        
+                        option.textContent = `${nome} ${cognome}`;
+                        /*mostro name e cognome associato alla persona che scelgo, per semplicitù */
+                        selettino.appendChild(option);
+                        /* ho messo l'appendchild appunto per la scelta progettuale non richiesta del selector, cosicchè
+                        venga selezionata la persona desiderarta, e si vedano le relative info*/
+                    }
+
+                    /*associo, associo e ancora associo*/
+                    selettino.addEventListener("change", function () 
+                    {
+                        const selectedIndex = this.value;
+                        if (selectedIndex !== "") 
+                        {
+                            const info = informazioni[selectedIndex];
+
+                            const nome = info.getElementsByTagName("nome")[0].textContent;
+                            const cognome = info.getElementsByTagName("cognome")[0].textContent;
+                            const cf = info.getElementsByTagName("CF")[0].textContent;
+                            const eta = info.getElementsByTagName("eta")[0].textContent;
+                            const via = info.getElementsByTagName("via")[0].textContent;
+                            const civico = info.getElementsByTagName("civico")[0].textContent;
+                            const citta = info.getElementsByTagName("citta")[0].textContent;
+                            const provincia = info.getElementsByTagName("provincia")[0].textContent;
+                            const numerotelefono = info.getElementsByTagName("numerotelefono")[0].textContent;
+                            const altezza = info.getElementsByTagName("altezza")[0].textContent;
+                            const unitina = info.getElementsByTagName("altezza")[0].getAttribute("unitina");
+
+                            /* creo la tabella contenente tutte le informationss*/
+                            const table = `
+                                <table>
+                                    <tr><th>Campo</th><th>Valore</th></tr>
+                                    <tr><td>Nome</td><td>${nome}</td></tr>
+                                    <tr><td>Cognome</td><td>${cognome}</td></tr>
+                                    <tr><td>Codice Fiscale</td><td>${cf}</td></tr>
+                                    <tr><td>Età</td><td>${eta}</td></tr>
+                                    <tr><td>Indirizzo</td><td>${via}, ${civico}</td></tr>
+                                    <tr><td>Città</td><td>${citta}</td></tr>
+                                    <tr><td>Provincia</td><td>${provincia}</td></tr>
+                                    <tr><td>Numero Telefono</td><td>${numerotelefono}</td></tr>
+                                    <tr><td>Altezza</td><td>${altezza} ${unitina}</td></tr>
+                                </table>
+                            `;
+
+                            document.getElementById("risultatino").innerHTML = table;
+                        }
+                         else 
+                         {
+                            document.getElementById("risultatino").innerHTML = "";
+                        }
+                    });
+                } 
+                else 
+                {
+                    document.getElementById("risultatino").innerHTML = `Errore nel caricamento del file XML: ${xhr.status}`;
+                }
+            };
+
+            xhr.onerror = function () 
+            {
+                document.getElementById("risultatino").innerHTML = "Errore di connessione.";
+            };
+
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
