@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cambio Valuta</title>
+    <img src="20231003cvimage.jpg" width="1450" height="300" />
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            margin: 20px;
+            background-color: grey;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: grey;
+        }
+
+        select, input {
+            margin: 10px;
+            padding: 5px;
+            font-size: 16px;
+            color: aqua;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 5px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cambio Valuta</h1>
+    
+    <select id="SelezionandoValutatina"></select>
+    <br>
+    <input type="number" id="importoEuro" placeholder="Inserisci valore" />
+    <button id="bottoncino">Converti</button>
+    <div id="risultatino"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () 
+        {
+            let xhr = new XMLHttpRequest();
+            let indirizzuccio = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
+
+            xhr.open("GET", indirizzuccio, true);
+            xhr.onload = function () 
+            {
+                if (xhr.status === 200) 
+                {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(xhr.responseText, "application/xml");
+
+                    /* ottengo i cube dall'xml */
+                    const cubeNodes = xmlDoc.getElementsByTagName("Cube");
+                    const selettino = document.getElementById("SelezionandoValutatina");
+
+                    /*ciclo per ottenere valute e ratess*/
+                    for (let i = 0; i < cubeNodes.length; i++) 
+                    {
+                        const currency = cubeNodes[i].getAttribute("currency");
+                        const rate = cubeNodes[i].getAttribute("rate");
+
+                        if (currency && rate) 
+                        {
+                            const opzioncina = document.createElement("opzioncina");
+                            opzioncina.value = rate;
+                            opzioncina.textContent = `${currency}`;
+                            selettino.appendChild(opzioncina);
+                        }
+                    }
+
+                    /* gestisco il bottoncino per il calcolo */
+                    document.getElementById("bottoncino").addEventListener("click", function () 
+                    {
+                        const Ratee = selettino.value;
+                        const Currencyy = selettino.options[selettino.selectedIndex].textContent;
+                        const importo = parseFloat(document.getElementById("importo").value);
+
+                        if (!isNaN(importo) && Ratee) 
+                        {
+                            const conversione = (importo * parseFloat(Ratee)).toFixed(2);
+
+                            document.getElementById("risultatino").innerHTML = `
+                                <table>
+                                    <tr><th>Valuta</th><th>Importo</th></tr>
+                                    <tr><td>${Currencyy}</td><td>${conversione}</td></tr>
+                                </table>
+                            `;
+                        } 
+                        else 
+                        {
+                            document.getElementById("risultatino").innerHTML = `
+                                <p style="color: red;">Controlla valuta e importo</p>
+                            `;
+                        }
+                    });
+                } 
+                else 
+                {
+                    document.getElementById("risultatino").innerHTML = `Errore nel caricamento del file XML: ${xhr.status}`;
+                }
+            };
+
+            xhr.onerror = function () 
+            {
+                document.getElementById("risultatino").innerHTML = "Errore di connessione.";
+            };
+
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
+
