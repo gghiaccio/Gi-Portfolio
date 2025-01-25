@@ -3,7 +3,8 @@
 <head>
     <title>Cambio Valuta</title>
     <style>
-        body {
+        body 
+        {
             font-family: 'Times New Roman', Times, serif, sans-serif;
             margin: 20px;
             background-color: grey;
@@ -11,31 +12,36 @@
             color: white;
         }
 
-        table {
+        table 
+        {
             border-collapse: collapse;
             width: 100%;
             margin: 20px 0;
         }
 
         th,
-        td {
+        td 
+        {
             border: 1px solid #ddd;
             padding: 8px;
             color: black;
         }
 
-        th {
+        th 
+        {
             background-color: grey;
             color: white;
         }
 
-        select, input, button {
+        select, input, button 
+        {
             margin: 10px;
             padding: 5px;
             font-size: 16px;
         }
 
-        button {
+        button 
+        {
             cursor: pointer;
             background-color: darkblue;
             color: white;
@@ -43,7 +49,8 @@
             border-radius: 5px;
         }
 
-        button:hover {
+        button:hover 
+        {
             background-color: blue;
         }
     </style>
@@ -62,7 +69,7 @@
         document.addEventListener("DOMContentLoaded", function () 
                                   {
             let xhr = new XMLHttpRequest();
-            let indirizzo = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
+            let indirizzo = "https://gghiaccio.github.io/Gi-Portfolio/20250125/eurofxref-daily.xml";
 
             xhr.open("GET", indirizzo, true);
             xhr.onload = function () 
