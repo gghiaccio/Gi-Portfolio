@@ -2,42 +2,49 @@
 <html>
 <head>
     <title>Cambio Valuta</title>
-    <img src="20231003cvimage.jpg" width="1450" height="300" />
     <style>
         body {
             font-family: 'Times New Roman', Times, serif, sans-serif;
             margin: 20px;
             background-color: grey;
             text-align: center;
+            color: white;
         }
 
         table {
             border-collapse: collapse;
             width: 100%;
+            margin: 20px 0;
         }
 
         th,
         td {
             border: 1px solid #ddd;
             padding: 8px;
+            color: black;
         }
 
         th {
             background-color: grey;
+            color: white;
         }
 
-        select, input {
+        select, input, button {
             margin: 10px;
             padding: 5px;
             font-size: 16px;
-            color: aqua;
         }
 
         button {
-            margin-top: 10px;
-            padding: 5px 15px;
-            font-size: 16px;
             cursor: pointer;
+            background-color: darkblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: blue;
         }
     </style>
 </head>
@@ -53,11 +60,11 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () 
-        {
+                                  {
             let xhr = new XMLHttpRequest();
-            let indirizzuccio = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
+            let indirizzo = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
 
-            xhr.open("GET", indirizzuccio, true);
+            xhr.open("GET", indirizzo, true);
             xhr.onload = function () 
             {
                 if (xhr.status === 200) 
@@ -65,11 +72,9 @@
                     const parser = new DOMParser();
                     const xmlDoc = parser.parseFromString(xhr.responseText, "application/xml");
 
-                    /* ottengo i cube dall'xml */
                     const cubeNodes = xmlDoc.getElementsByTagName("Cube");
                     const selettino = document.getElementById("SelezionandoValutatina");
 
-                    /*ciclo per ottenere valute e ratess*/
                     for (let i = 0; i < cubeNodes.length; i++) 
                     {
                         const currency = cubeNodes[i].getAttribute("currency");
@@ -77,28 +82,27 @@
 
                         if (currency && rate) 
                         {
-                            const opzioncina = document.createElement("opzioncina");
-                            opzioncina.value = rate;
-                            opzioncina.textContent = `${currency}`;
-                            selettino.appendChild(opzioncina);
+                            const option = document.createElement("option");
+                            option.value = rate;
+                            option.textContent = `${currency}`;
+                            selettino.appendChild(option);
                         }
                     }
 
-                    /* gestisco il bottoncino per il calcolo */
                     document.getElementById("bottoncino").addEventListener("click", function () 
-                    {
-                        const Ratee = selettino.value;
-                        const Currencyy = selettino.options[selettino.selectedIndex].textContent;
-                        const importo = parseFloat(document.getElementById("importo").value);
+                                                                           {
+                        const rate = selettino.value;
+                        const currency = selettino.options[selettino.selectedIndex].textContent;
+                        const importo = parseFloat(document.getElementById("importoEuro").value);
 
-                        if (!isNaN(importo) && Ratee) 
+                        if (!isNaN(importo) && rate) 
                         {
-                            const conversione = (importo * parseFloat(Ratee)).toFixed(2);
+                            const conversione = (importo * parseFloat(rate)).toFixed(2);
 
                             document.getElementById("risultatino").innerHTML = `
                                 <table>
                                     <tr><th>Valuta</th><th>Importo</th></tr>
-                                    <tr><td>${Currencyy}</td><td>${conversione}</td></tr>
+                                    <tr><td>${currency}</td><td>${conversione}</td></tr>
                                 </table>
                             `;
                         } 
@@ -126,4 +130,5 @@
     </script>
 </body>
 </html>
+
 
