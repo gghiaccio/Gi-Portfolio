@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+    <title>Elenco dei Post</title>
+    <img src="20231003cvimage.jpg" width="1450" height="300" />
+    <style>
+
+        body 
+        {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            margin: 20px;
+            background-color: grey;
+            text-align: center;
+            color: white;
+        }
+
+        /* stile della lista */
+        ul 
+        {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* stile elementi lista */
+        li 
+        {
+            background-color: white;
+            margin: 10px auto;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            color: black;
+            width: 60%;
+        }
+
+        /* stile linkss */
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        a:hover 
+        {
+            color: #d2afff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Elenco dei Posts.</h1>
+    <ul id="postList"></ul> 
+    // creo la lista
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            //url api rest
+            const apiUrl = 'https://www.bata.com/it/wp-json/wp/v2/posts'; 
+
+            // richiestina dell'api
+            fetch(apiUrl)
+                .then(response => 
+                {
+                    if (!response.ok) 
+                    {
+                        throw new Error(`Errore HTTP! Stato: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(posts => 
+                {
+                    //seleziono la lista
+                    const postList = document.getElementById('postList'); 
+                    
+                    posts.forEach(post => 
+                    {
+                        //creo un item della lista
+                        const listItem = document.createElement('li'); 
+                        //creo un linkk
+                        const postLink = document.createElement('a'); 
+
+                        //url del post
+                        postLink.href = post.link; 
+                        //titolo 
+                        postLink.textContent = post.title.rendered; 
+
+                        //aggiungo link all'item della list
+                        listItem.appendChild(postLink); 
+                        //aggiungo l'item alla main list
+                        postList.appendChild(listItem); 
+                    });
+                })
+                .catch(error => 
+                {
+                    console.error('Si è verificato un errore:', error);
+                });
+        });
+    </script>
+</body>
+</html>
