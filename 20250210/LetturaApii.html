@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Elenco dei Post</title>
+    <img src="20231003cvimage.jpg" width="1450" height="300" />
+    <style>
+        body 
+        {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            margin: 20px;
+            background-color: grey;
+            text-align: center;
+            color: white;
+        }
+
+        /* stile della list */
+        ul 
+        {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* stile elementi lista */
+        li 
+        {
+            background-color: white;
+            margin: 10px auto;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            color: black;
+            width: 60%;
+        }
+
+        /* stile link */
+        a 
+        {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        a:hover 
+        {
+            color: #d2afff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Elenco dei Posts.</h1>
+    <ul id="postList"></ul> 
+    
+    <script>
+        // x output
+        var stringa = "";
+        // richiesta HTTP
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() 
+        {
+            // controllo se ric. completata e corretta
+            if (this.readyState == 4 && this.status == 200) 
+        {
+                // risposta JSON
+                var myObj = JSON.parse(this.responseText);
+                // selectin della lista HTML
+                var postList = document.getElementById("postList");
+                
+                // gestione postss
+                myObj.forEach(post => 
+        {
+                    // creo elemento della lista
+                    var listItem = document.createElement("li");
+                    // creo link
+                    var postLink = document.createElement("a");
+                    // url e testo x link
+                    postLink.href = post.link;
+                    postLink.textContent = post.title.rendered;
+                    // aggiungo link al list item
+                    listItem.appendChild(postLink);
+                    // aggiungo item nella main list
+                    postList.appendChild(listItem);
+                });
+            }
+        };
+        // apro richiesta API
+        xmlhttp.open("GET", "https://www.desrparcosud.it/wp-json/wp/v2/posts?search=AMAP", true);
+        // invio richiesta
+        xmlhttp.send();
+    </script>
+</body>
+</html>
