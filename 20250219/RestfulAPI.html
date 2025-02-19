@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <img src="20231003cvimage.jpg" width="1450" height="300" />
+    <style>
+
+        body 
+        {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            margin: 20px;
+            background-color: grey;
+            text-align: center;
+            color: white;
+        }
+
+        /* stile della lista */
+        ul 
+        {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* stile elementi lista */
+        li 
+        {
+            background-color: white;
+            margin: 10px auto;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            color: black;
+            width: 60%;
+        }
+
+        /* stile linkss */
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        a:hover 
+        {
+            color: #d2afff;
+        }
+    </style>
+
+ <title>RESTful API.</title>
+</head>
+
+<body>
+<h1>RESTful API.</h1>
+<table id="demo" class="table table-dark"></table></p>
+
+<script>
+  var stringa="";
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() 
+  {
+    if (this.readyState == 4 && this.status == 200) 
+    {
+      var myObj = JSON.parse(this.responseText);
+        for(var x in myObj)
+        {
+          stringa += "<tr><td>" + myObj[x].id + "</td><td> " + myObj[x].title.rendered + "</td></tr>";
+          document.getElementById("demo").innerHTML=stringa;
+        }
+    }
+  };
+  xmlhttp.open("GET", "https://www.sony.it/wp-json/wp/v2/posts?search=AMAP", true);
+  xmlhttp.send();
+  
+  </script>
+
+</body>
+</html>
