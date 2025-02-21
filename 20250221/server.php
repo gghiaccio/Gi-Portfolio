@@ -1,6 +1,6 @@
 <?php
 //restituisco un salutino carino
-function Salutino($name)
+function salutino($name)
 {
     $salutation = "Ciao " . $name . ", funziono correttamente...per ora.";
     return $salutation;
@@ -10,7 +10,7 @@ function Salutino($name)
 $server = new SoapServer("test.wsdl");
 
 // associo la funzione al server SOAP
-$server->addFunction("Salutino");
+$server->addFunction("salutino");
 
 // gestiscon le richieste soap
 $server->handle();
