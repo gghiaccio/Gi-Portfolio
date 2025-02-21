@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <definitions name="test"
-    targetNamespace="http://URL_CARTELLA_SERVER_SOAP"
-    xmlns:tns="http://URL_CARTELLA_SERVER_SOAP"
+    targetNamespace="https://gghiaccio.github.io/Gi-Portfolio/20250221"
+    xmlns:tns="https://gghiaccio.github.io/Gi-Portfolio/20250221"
     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
@@ -46,7 +46,7 @@
     <!-- definizione del servizio e della sua posizione -->
     <service name="SalutinoService">
         <port name="Portuccia" binding="tns:Binding">
-            <soap:address location="http://URL_SCRIPT_PHP_SERVER_SOAP" />
+            <soap:address location="https://gghiaccio.github.io/Gi-Portfolio/20250221/server.php" />
         </port>
     </service>
 </definitions>
