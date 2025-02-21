@@ -1,6 +1,6 @@
 <?php
 // URL del file WSDL
-$wsdl_url = "http://URL_AL_DEL_FILE_WSDL";
+$wsdl_url = "https://gghiaccio.github.io/Gi-Portfolio/20250221/test.wsdl";
 
 // check se il modulo di input ha inviato un nome
 if (isset($_POST['name'])) 
