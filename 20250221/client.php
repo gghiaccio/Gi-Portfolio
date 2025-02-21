@@ -12,7 +12,7 @@ if (isset($_POST['name']))
         $client = new SoapClient($wsdl_url);
 
         // richiamo il salutino
-        $response = $client->Salutino(htmlentities($_POST['name']));
+        $response = $client->salutino(htmlentities($_POST['name']));
 
         // stampo la response
         print_r($response);
