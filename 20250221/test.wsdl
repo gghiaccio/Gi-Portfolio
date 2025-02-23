@@ -1,53 +1,51 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <definitions name="test"
-    targetNamespace="https://gghiaccio.github.io/Gi-Portfolio/20250221"
-    xmlns:tns="https://gghiaccio.github.io/Gi-Portfolio/20250221"
+    targetNamespace="http://localhost/soap"
+    xmlns:tns="http://localhost/soap"
     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
     xmlns="http://schemas.xmlsoap.org/wsdl/">
 
-    <!-- il servizio riceve il nome, che è di tipo stringa -->
+    <!-- Definizione della richiesta -->
     <message name="salutinoRequest">
         <part name="name" type="xsd:string"/>
     </message>
 
-    <!-- definizione del messaggio di risposta -->
-    <message name="salutando">
-        <part name="salutation" type="xsd:string"/>
+    <!-- Definizione della risposta -->
+    <message name="salutinoResponse">
+        <part name="return" type="xsd:string"/>
     </message>
 
-    <!-- definizione del portType cche descrive l'operazione disponibile -->
-    <portType name="PortTType">
+    <!-- Porta -->
+    <portType name="SalutinoPortType">
         <operation name="salutino">
             <input message="tns:salutinoRequest" />
-            <output message="tns:salutando" />
+            <output message="tns:salutinoResponse" />
         </operation>
     </portType>
 
-    <!-- definizione del binding (specifica il protocollo SOAP) -->
-    <binding name="Binding" type="tns:PortTType">
+    <!-- Binding -->
+    <binding name="SalutinoBinding" type="tns:SalutinoPortType">
         <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
         <operation name="salutino">
             <soap:operation soapAction="" />
             <input>
-                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
             </input>
             <output>
-                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
             </output>
         </operation>
     </binding>
 
-    <!-- documentazione del servizio -->
-    <documentation>Servizio SOAP per restituire un saluto personalizzato</documentation>
-
-    <!-- definizione del servizio e della sua posizione -->
+    <!-- Servizio -->
     <service name="SalutinoService">
-        <port name="Portuccia" binding="tns:Binding">
-            <soap:address location="https://gghiaccio.github.io/Gi-Portfolio/20250221/server.php" />
+        <port name="SalutinoPort" binding="tns:SalutinoBinding">
+            <soap:address location="http://localhost/soap/server.php" />
         </port>
     </service>
 </definitions>
+
 
