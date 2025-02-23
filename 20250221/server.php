@@ -1,13 +1,14 @@
 <?php
+
 //restituisco un salutino carino
 function salutino($name)
 {
-    $salutation = "Ciao " . $name . ", funziono correttamente...per ora.";
-    return $salutation;
+    return "Ciao " . $name . ", funziono correttamente...per ora.";
 }
 
 // creo il server soap, impiegando il file wsdl
-$server = new SoapServer("test.wsdl");
+$server = new SoapServer("http://localhost/soap/test.wsdl", ['soap_version' => SOAP_1_1]);
+
 
 // associo la funzione al server SOAP
 $server->addFunction("salutino");
