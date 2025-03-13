@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+  <channel>
+    <title>Canzoncine carine.</title>
+    <link>https://open.spotify.com/user/tuo-profilo</link>
+    <description>Una raccolta delle mie canzoni su Spotify</description>
+    <item>
+      <title>1. - Amarsi un po' </title>
+      <link>https://open.spotify.com/track/5MHUCw9nrw2RpHbl384ZAR?si=b1f70210f4eb44a0</link>
+      <description>Canzone numero 1 nella classifica della Gi </description>
+    </item>
+    <item>
+      <title>2. - La mia storia tra le dita </title>
+      <link>https://open.spotify.com/track/5L4wJD8eyVhSrm4pbPuF2u?si=9021b808f1b84eb3</link>
+      <description>Seconda canzone nella classifica della gi </description>
+    </item>
+    <item>
+
+      <title>3. - Sempre e per sempre </title>
+      <link>https://open.spotify.com/track/5K8tLt1YQiLALZGwcErrjH?si=0973e83bbca24cd8</link>
+      <description>Terza ma è come se valesse pure per 3 </description>
+    </item>
+  </channel>
+</rss>
