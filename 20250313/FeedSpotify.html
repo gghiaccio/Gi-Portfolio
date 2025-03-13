@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed di Spotify.</title>
+    <style>
+        body 
+        {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+            background-color: grey;
+            text-align: center;
+            color: white;
+        }
+        ul 
+        {
+            list-style-type: none;
+            padding: 0;
+        }
+        li 
+        {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        a 
+        {
+            text-decoration: none;
+            color: #7692e4;
+            font-weight: bold;
+        }
+        a:hover 
+        {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Feed di Spotify.</h1>
+    <ul id="feed"></ul>
+
+    <script>
+        async function loadRSS() 
+        {
+            
+            const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://gghiaccio.github.io/Gi-Portfolio/20250313/canzoncine.xml');
+            const data = await response.json();
+
+            const feedino = document.getElementById('feed');
+
+            data.items.forEach(item => 
+            {
+                const elementuccio = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = item.link;
+                link.target = '_blank';
+                link.textContent = item.title;
+                elementuccio.appendChild(link);
+                feedino.appendChild(elementuccio);
+            });
+        }
+
+        loadRSS();
+    </script>
+</body>
+</html>
