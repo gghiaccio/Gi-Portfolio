@@ -55,7 +55,7 @@
                 const iframe = document.createElement('iframe'); // creo iframe
                 iframe.src = item.link; // link contenuto 
                 iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"; // permessi player
-                iframe.loading = "lazy"; // caricamento lazy
+                iframe.loading = "lazy"; // caricamento lazy, per caricare solo quando servono, ottimizzando le risorse
                 iframe.frameBorder = "0"; // no bordo frame
 
                 card.appendChild(title); // titolo alla card
