@@ -1,39 +1,40 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RESTful API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- è ""responssssivvve"" -->
+    <title>RESTful API</title> 
+
     <style>
         body 
         {
-            font-family: 'Times New Roman', Times, serif;
-            margin: 20px;
-            background-color: grey;
-            text-align: center;
-            color: white;
+            font-family: 'Times New Roman', Times, serif; 
+            margin: 20px; 
+            background-color: grey; 
+            text-align: center; 
+            color: white; 
         }
 
         ul 
         {
-            list-style-type: none;
-            padding: 0;
+            list-style-type: none; 
+            padding: 0; 
         }
 
         li 
         {
-            background-color: white;
+            background-color: white; 
             margin: 10px auto;
             padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            color: black;
-            width: 60%;
+            border-radius: 5px; 
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+            color: black; 
+            width: 60%; 
         }
 
         a 
         {
-            text-decoration: none;
-            color: black;
+            text-decoration: none; 
+            color: black; 
             font-weight: bold;
         }
 
@@ -44,62 +45,69 @@
 
         table 
         {
-            width: 80%;
-            margin: auto;
-            border-collapse: collapse;
-            background: white;
-            color: black;
+            width: 80%; 
+            margin: auto; 
+            border-collapse: collapse; 
+            background: white; 
+            color: black; 
         }
 
         th, td 
         {
-            padding: 10px;
-            border: 1px solid black;
+            padding: 10px; 
+            border: 1px solid black; 
         }
 
         th 
         {
-            background: #444;
-            color: white;
+            background: #444; 
+            color: white; 
         }
     </style>
 </head>
 <body>
 
     <img src="20231003cvimage.jpg" width="1450" height="300" />
+
+    <h1>RESTful API</h1> 
     
-    <h1>RESTful API</h1>
-    
-    <table id="demo">
+    <table id="demo"> <!-- id demo per testing -->
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Title</th>
+                <th>ID</th> <!--  ID -->
+                <th>Title</th> <!-- Titolo -->
             </tr>
         </thead>
-        <tbody></tbody>
+        <tbody></tbody> 
     </table>
 
     <script>
-        var xmlhttp = new XMLHttpRequest();
+        var xmlhttp = new XMLHttpRequest(); //  nuovo oggetto per chiamata di ajax
+
         xmlhttp.onreadystatechange = function() 
         {
-            if (this.readyState == 4 && this.status == 200) 
+            if (this.readyState == 4 && this.status == 200) // check se è correct
             {
-                var myObj = JSON.parse(this.responseText);
-                var stringa = "";
-                for (var x in myObj) 
+                var myObj = JSON.parse(this.responseText); // converto risposta json in JS
+                var stringa = ""; // inizializzo stringa vuota
+
+                for (var x in myObj) // iterationss
                 {
-                    if (myObj[x].title && myObj[x].title.rendered) 
+                    if (myObj[x].title && myObj[x].title.rendered) // check titolo disponibile
                     {
+                        // aggiungo riga con id e title
                         stringa += "<tr><td>" + myObj[x].id + "</td><td>" + myObj[x].title.rendered + "</td></tr>";
                     }
                 }
+
+                // aggiungo contenuo alla table
                 document.querySelector("#demo tbody").innerHTML = stringa;
             }
         };
+
+        // richiesta get alla restapi di wp per cercare post contenenti amap
         xmlhttp.open("GET", "https://www.desrparcosud.it/wp-json/wp/v2/posts?search=AMAP", true);
-        xmlhttp.send();
+        xmlhttp.send(); // send request
     </script>
 
 </body>
