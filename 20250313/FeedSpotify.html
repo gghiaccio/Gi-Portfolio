@@ -1,69 +1,70 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feed di Spotify.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- obv responsive -->
+    <title>Feed di Spotify.</title> 
     <style>
         body 
         {
-            font-family: 'Times New Roman', Times, serif;
-            margin: 20px;
-            background-color: grey;
-            text-align: center;
-            color: white;
+            font-family: 'Times New Roman', Times, serif; 
+            margin: 20px; 
+            background-color: grey; 
+            text-align: center; 
+            color: white; 
         }
         .card 
         {
-            background-color: #1DB954;
+            background-color: #1DB954; 
             margin: 20px auto;
             padding: 20px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 600px;
+            border-radius: 15px; 
+            width: 90%; 
+            max-width: 600px; 
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         iframe 
         {
-            border-radius: 12px;
-            width: 100%;
-            height: 152px;
+            border-radius: 12px; 
+            width: 100%; 
+            height: 152px; 
         }
     </style>
 </head>
 <body>
-    <img src="20231003cvimage.jpg" width="100%" height="300" alt="Header Image" />
-    <h1>Podcast su Spotify.</h1>
-    <div id="feed"></div>
+    <img src="20231003cvimage.jpg" width="100%" height="300" alt="Header Image" /> 
+    <h1>Podcast su Spotify.</h1> 
+    <div id="feed"></div> <!--contenitore dove inseriamo i podcast -->
 
     <script>
         async function loadRSS() 
         {
+            // richiesta http per ottenere i dati rss convertiti in json
             const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://gghiaccio.github.io/Gi-Portfolio/20250313/podcastini.xml');
-            const data = await response.json();
+            const data = await response.json(); //conberto la risposta in JSON
 
-            const feedContainer = document.getElementById('feed');
+            const feedContainer = document.getElementById('feed'); //seleziono il contenitore
 
             data.items.forEach(item => 
                 {
-                const card = document.createElement('div');
-                card.className = 'card';
+                const card = document.createElement('div'); // nuovo div per la card
+                card.className = 'card'; // assegno classe card
 
-                const title = document.createElement('h3');
-                title.textContent = item.title;
+                const title = document.createElement('h3'); // h3
+                title.textContent = item.title; // titolo podcast
 
-                const iframe = document.createElement('iframe');
-                iframe.src = item.link;
-                iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
-                iframe.loading = "lazy";
-                iframe.frameBorder = "0";
+                const iframe = document.createElement('iframe'); // creo iframe
+                iframe.src = item.link; // link contenuto 
+                iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"; // permessi player
+                iframe.loading = "lazy"; // caricamento lazy
+                iframe.frameBorder = "0"; // no bordo frame
 
-                card.appendChild(title);
-                card.appendChild(iframe);
-                feedContainer.appendChild(card);
+                card.appendChild(title); // titolo alla card
+                card.appendChild(iframe); // iframe alla card
+                feedContainer.appendChild(card); // card al contenitore principale
             });
         }
 
-        loadRSS();
+        loadRSS(); // chiamo la funzione per caricare e mostrare i podcast
     </script>
 </body>
 </html>
