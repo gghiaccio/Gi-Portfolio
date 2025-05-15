@@ -1,21 +1,21 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>Podcast carini.</title>
-    
+    <title>Podcast carini</title>
+
     <item>
-      <title>1. - Innovazione II </title>
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/1L2FGflpQ5D92Z5PQtskwP?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <title>1. - Innovazione II</title>
+      <link>https://open.spotify.com/embed/episode/1L2FGflpQ5D92Z5PQtskwP?utm_source=generator</link>
     </item>
-    
+
     <item>
-      <title>2. - Innovazione I </title>
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/0cgbmVY3ueUjEoSujjPV63?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <title>2. - Innovazione I</title>
+      <link>https://open.spotify.com/embed/episode/0cgbmVY3ueUjEoSujjPV63?utm_source=generator</link>
     </item>
-    
+
     <item>
-      <title>3. - RSS </title>
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/6rmuvuV8BiCJnZFTRydHul?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <title>3. - RSS</title>
+      <link>https://open.spotify.com/embed/episode/6rmuvuV8BiCJnZFTRydHul?utm_source=generator</link>
     </item>
   </channel>
 </rss>
